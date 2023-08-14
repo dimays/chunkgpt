@@ -1,0 +1,9 @@
+LICENSE
+README.md
+pyproject.toml
+src/chunkgpt/__init__.py
+src/chunkgpt/chunkgpt.py
+src/chunkgpt.egg-info/PKG-INFO
+src/chunkgpt.egg-info/SOURCES.txt
+src/chunkgpt.egg-info/dependency_links.txt
+src/chunkgpt.egg-info/top_level.txt
