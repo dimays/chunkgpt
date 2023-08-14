@@ -1,6 +1,6 @@
 # ChunkGPT: Summarization for Large Texts
 
-![ChunkGPT Logo](chunkGPT-logo.png)
+![ChunkGPT Logo](https://raw.githubusercontent.com/dimays/chunkgpt/main/chunkGPT-logo.png)
 
 ChunkGPT is a lightweight Python library designed to assist users in summarizing long texts that exceed the token limit of OpenAI's GPT-based models. It breaks down large texts into manageable chunks, generates summaries for each chunk, and then combines these summaries into a coherent final summary.
 
