@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: chunkgpt
-Version: 0.1.0
+Version: 0.1.1
 Summary: A lightweight library for summarizing text that surpasses the token limit of specific OpenAI GPT-based models.
 Author-email: David Mays <maysidavid@gmail.com>
 Project-URL: Homepage, https://github.com/dimays/chunkgpt
@@ -14,7 +14,7 @@ License-File: LICENSE
 
 # ChunkGPT: Summarization for Large Texts
 
-![ChunkGPT Logo](chunkGPT-logo.png)
+![ChunkGPT Logo](https://raw.githubusercontent.com/dimays/chunkgpt/main/chunkGPT-logo.png)
 
 ChunkGPT is a lightweight Python library designed to assist users in summarizing long texts that exceed the token limit of OpenAI's GPT-based models. It breaks down large texts into manageable chunks, generates summaries for each chunk, and then combines these summaries into a coherent final summary.
 
