@@ -26,7 +26,7 @@ ChunkGPT depends on the following Python libraries, which are both included in t
 It's easy to use ChunkGPT! Follow these general steps to generate summaries for your lengthy texts:
 
 ```python
-from chunkgpt import Chunker
+from chunkgpt.chunkgpt import Chunker
 
 # Initialize the Chunker object
 chunker = Chunker()
@@ -72,7 +72,7 @@ Include ALL KEY POINTS, and exclude any unnecessary excess.
 However, if you are interested in experimenting with different system messages in order to tweak the quality or format of the final summary, you can define a `custom_system_msg` when initializing the `Chunker` object.
 
 ```python
-from chunkgpt import Chunker
+from chunkgpt.chunkgpt import Chunker
 
 sys_msg = "Summarize the text you are given to the best of your ability."
 
@@ -84,7 +84,7 @@ chunker = Chunker(custom_system_msg=sys_msg)
 By default, ChunkGPT look for an environment variable called `OPENAI_API_KEY`. If you choose to manage your API keys in a different way, you may define your API Key when initializing the `Chunker` object.
 
 ```python
-from chunkgpt import Chunker
+from chunkgpt.chunkgpt import Chunker
 
 my_key = 'myApiKey1234'
 
@@ -96,7 +96,7 @@ chunker = Chunker(api_key=my_key)
 ChunkGPT supports all `gpt-3.5` and `gpt-4` models from OpenAI.
 
 ```python
-from chunkgpt import Chunker
+from chunkgpt.chunkgpt import Chunker
 
 chunker = Chunker(model='gpt-4')
 ```
@@ -106,7 +106,7 @@ chunker = Chunker(model='gpt-4')
 By default, ChunkGPT usees a temperature of 0. Temperatures closer to 0 will be less variable, while temperatures closer to 2 can be so variable as to be incomprehensible.
 
 ```python
-from chunkgpt import Chunker
+from chunkgpt.chunkgpt import Chunker
 
 chunker = Chunker(temperature=0.5)
 ```
@@ -120,7 +120,7 @@ chunker = Chunker(temperature=0.5)
 `summary_length` represents the max number of tokens enforced for the output of the model. If your final summary result is getting cut off, you may want to consider increasing this value.
 
 ```python
-from chunkgpt import Chunker
+from chunkgpt.chunkgpt import Chunker
 
 chunker = Chunker(max_chunk_length=4000,
                   summary_length=200,
@@ -134,7 +134,7 @@ chunker = Chunker(max_chunk_length=4000,
 If you wish to access the intermediate summaries, you can reference the `'chunks'` dictionary included in the response of `Chunker.summarize()`.
 
 ```python
-from chunkgpt import Chunker
+from chunkgpt.chunkgpt import Chunker
 
 chunker = Chunker()
 
@@ -247,7 +247,7 @@ You can test out the utility of this library against large texts by using these 
 
 For example, see this script summarizing the 2023 IPCC Summary for Policymakers:
 ```python
-from chunkgpt import Chunker
+from chunkgpt.chunkgpt import Chunker
 
 chunker = Chunker()
 
