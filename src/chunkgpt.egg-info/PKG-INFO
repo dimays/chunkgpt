@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: chunkgpt
-Version: 0.1.1
+Version: 0.1.2
 Summary: A lightweight library for summarizing text that surpasses the token limit of specific OpenAI GPT-based models.
 Author-email: David Mays <maysidavid@gmail.com>
 Project-URL: Homepage, https://github.com/dimays/chunkgpt
