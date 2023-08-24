@@ -343,11 +343,3 @@ class Chunker:
                 print("No more retries.")
                 raise ValueError("Unable to return completion.")
         return completion
-
-if __name__ == '__main__':
-    with open('/Users/davidmays/code/python_packages/chunkgpt/examples/ipcc_summary_2023.txt', 'r') as infile:
-        text = infile.read()
-
-    chunker = Chunker()
-    summary = chunker.summarize(text, final_step='combine')
-    print(summary['result'])
