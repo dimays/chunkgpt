@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: chunkgpt
-Version: 0.1.4
+Version: 0.2.0
 Summary: A lightweight library for summarizing text that surpasses the token limit of specific OpenAI GPT-based models.
 Author-email: David Mays <maysidavid@gmail.com>
 Project-URL: Homepage, https://github.com/dimays/chunkgpt
@@ -163,6 +163,26 @@ for chunk in summary['chunks']:
     print("Summary:")
     print(summary['chunks']['output'])
 ```
+
+### Skip Final Reduction & Summarization Step
+
+By default, `Chunker.summarize()` will reduce the final output until its length, combined with the system prompt and `summary_length`, falls within the overall `token_limit`.
+
+However, if you find that this final summary is too short, and you want a more detailed summary, you can change this behavior by changing the `final_step` parameter.
+
+This paramter is set to `'summarize'` by default, but it also accepts `'combine'`, which instructs ChunkGPT to skip this final summary step and instead return a combination of all intermediate summaries.
+
+```python
+from chunkgpt.chunkgpt import Chunker
+
+chunker = Chunker()
+
+text = "..."
+
+summary = chunker.summarize(text, final_step='combine')
+```
+
+*Note: Because this final step is a simple concatenation of separately summarized excerpts, this option may lead to a more detailed, although possibly less coherent, final output.*
 
 ## `Chunker` Object
 

@@ -153,8 +153,13 @@ class Chunker:
 
         print("Initialized Chunker.")
 
-    def summarize(self, text):
-        """Generate a summary for a text and some metadata about the summarizing process."""
+    def summarize(self, text, final_step='summarize'):
+        """Generate a summary for a text and some metadata about the summarizing process.
+        
+        final_step: 
+          - if 'summarize' (default), the final step will be to summarize the combined intermediate summaries.
+          - if 'combine', the final step will be to combine the intermediate summaries.
+        """
         # Initialize summary dict
         summary = {
             'original': text,
@@ -192,8 +197,15 @@ class Chunker:
         # Calculate token count of combined summary string
         combined_token_cnt = self._get_complete_token_count(combined_summaries)
 
-        # Reduce size of combined summary string if necessary
-        if combined_token_cnt >= self.token_limit:
+        # Simply return combined summaries if final step is 'combine'.
+        if final_step == 'combine':
+            content = combined_summaries
+            summary['result'] = content
+            step = "Returned combined summaries as final step."
+            summary['intermediate_steps'].append(step)
+            print(step)
+        # Otherwise, if 'summarize', reduce size of combined summary string if necessary
+        elif final_step == 'summarize' and combined_token_cnt >= self.token_limit:
             reduced_summary = self.summarize(combined_summaries)
             new_token_cnt = self._get_complete_token_count(reduced_summary['result'])
             summary['total_tokens'] += reduced_summary['total_tokens']
@@ -202,8 +214,8 @@ class Chunker:
             summary['intermediate_steps'].append(step)
             summary['result'] = reduced_summary['result']
             print(step)
-        # Otherwise add final result to the summary dict
-        else:
+        # Otherwise get summary for combined summaries.
+        elif final_step == 'summarize':
             completion = self._get_completion(combined_summaries)
             content = completion['choices'][0]['message']['content']
             summary['result'] = content
@@ -213,6 +225,8 @@ class Chunker:
             step = "Got completion for combined summaries."
             summary['intermediate_steps'].append(step)
             print(step)
+        else:
+            raise ValueError(f"'final_step' option {final_step} unrecognized. Expects 'summarize' or 'combine'")
 
         return summary
 
