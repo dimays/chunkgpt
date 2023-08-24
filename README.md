@@ -150,6 +150,26 @@ for chunk in summary['chunks']:
     print(summary['chunks']['output'])
 ```
 
+### Skip Final Reduction & Summarization Step
+
+By default, `Chunker.summarize()` will reduce the final output until its length, combined with the system prompt and `summary_length`, falls within the overall `token_limit`.
+
+However, if you find that this final summary is too short, and you want a more detailed summary, you can change this behavior by changing the `final_step` parameter.
+
+This paramter is set to `'summarize'` by default, but it also accepts `'combine'`, which instructs ChunkGPT to skip this final summary step and instead return a combination of all intermediate summaries.
+
+```python
+from chunkgpt.chunkgpt import Chunker
+
+chunker = Chunker()
+
+text = "..."
+
+summary = chunker.summarize(text, final_step='combine')
+```
+
+*Note: Because this final step is a simple concatenation of separately summarized excerpts, this option may lead to a more detailed, although possibly less coherent, final output.*
+
 ## `Chunker` Object
 
 The `Chunker` object serves as the core mechanism responsible for breaking down large texts into smaller, manageable chunks, generating summaries for each of these chunks, and ultimately combining these chunk summaries into a coherent final summary.
