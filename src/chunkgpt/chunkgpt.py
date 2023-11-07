@@ -262,9 +262,11 @@ class Chunker:
     
     def _get_token_limit(self):
         """Returns the token limit for each gpt-3.5 and gpt-4 model,
-        current as of August 13, 2023."""
+        current as of November 07, 2023."""
         if self.model.startswith('gpt-3.5-turbo-16k'):
             token_limit = 16384
+        elif self.model.startswith('gpt-4-1106'):
+            token_limit = 128000
         elif self.model.startswith('gpt-4-32k'):
             token_limit = 32768
         elif self.model.startswith('gpt-4'):
@@ -275,9 +277,11 @@ class Chunker:
 
     def _get_price_per_token(self):
         """Returns the price per token in cents for each gpt-3.5 and
-        gpt-4 model, current as of August 13, 2023."""
+        gpt-4 model, current as of November 07, 2023."""
         if self.model.startswith('gpt-3.5-turbo-16k'):
             price = 0.0003
+        if self.model.startswith('gpt-4-1106'):
+            price = 0.01
         elif self.model.startswith('gpt-4-32k'):
             price = 0.006
         elif self.model.startswith('gpt-4'):

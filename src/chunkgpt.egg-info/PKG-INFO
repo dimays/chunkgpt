@@ -249,11 +249,11 @@ Returns a decoded string from a list of tokens.
 
 #### `Chunker._get_token_limit()`
 
-Returns the token limit for each gpt-3.5 and gpt-4 model, current as of August 13, 2023.
+Returns the token limit for each gpt-3.5 and gpt-4 model, current as of November 7, 2023.
 
 #### `Chunker._get_price_per_token()`
 
-Returns the price per token in cents for each gpt-3.5 and gpt-4 model, current as of August 13, 2023.
+Returns the price per token in cents for each gpt-3.5 and gpt-4 model, current as of November 7, 2023.
 
 #### `Chunker._get_complete_token_count(text)`
 
@@ -275,7 +275,7 @@ If the completion fails, ChunkGPT will retry up to 3 times, with a delay of 1 se
 
 ## Examples
 
-The [Github repo](https://www.github.com/dimays/chunkgpt) for ChunkGPT inclues long sample .txt files to test out in the `examples/` directory. Each file, when added to the existing system and user message templates, exceeds the token limit for all available OpenAI GPT models (as of August 13, 2023).
+The [Github repo](https://www.github.com/dimays/chunkgpt) for ChunkGPT inclues long sample .txt files to test out in the `examples/` directory. Each file, when added to the existing system and user message templates, exceeds the token limit for all available OpenAI GPT models (as of November 7, 2023).
 
 You can test out the utility of this library against large texts by using these sample texts and employing any GPT models or Chunker object attributes you wish to experiment with.
 
